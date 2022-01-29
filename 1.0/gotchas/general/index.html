@@ -274,7 +274,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../reference/icons/" class="md-tabs__link">
+      <a href="../../reference/checklist.md" class="md-tabs__link">
         Reference
       </a>
     </li>
@@ -1214,6 +1214,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/checklist.md" class="md-nav__link">
+        Checklist
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/icons/" class="md-nav__link">
         Icons
       </a>
@@ -1278,7 +1292,7 @@
 
 <div class="admonition warning">
 <p class="admonition-title">I have a problem that is not in this list.</p>
-<p>Try <a href="https://www.jetbrains.com/help/mps/invalidate-caches.html">invalidating the cache</a> and restarting MPS (same menu). Search the <a href="https://mps-support.jetbrains.com/hc/en-us/community/topics">forum</a> and <a href="https://youtrack.jetbrains.com/issues/MPS">issue tracker</a>. 
+<p>Try <span class="hover_img"><a href="https://www.jetbrains.com/help/mps/invalidate-caches.html">invalidating the cache<span><img src="../../img/invalidate_cache.gif" alt="invalidate cache" /></span></a></span> and restarting MPS (same menu). Search the <a href="https://mps-support.jetbrains.com/hc/en-us/community/topics">forum</a> and <a href="https://youtrack.jetbrains.com/issues/MPS">issue tracker</a>. 
 Ask a question on <a href="http://slack-mps.jetbrains.com">Slack</a>.</p>
 </div>
 <div class="admonition warning">
@@ -1287,33 +1301,23 @@ Ask a question on <a href="http://slack-mps.jetbrains.com">Slack</a>.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Are there any recommended MPS settings that should be changed?</p>
-<p>The <a href="https://www.jetbrains.com/help/mps/tuning-the-ide.html#common-jvm-options">Maximum Heap Size</a> in Help-&gt;Change Memory setting should be changed to a higher values such as 8 GB when using many languages or plugins.</p>
+<p>The <span class="hover_img"><a href="https://www.jetbrains.com/help/mps/tuning-the-ide.html#common-jvm-options">maximum heap size<span><img src="../../img/maximum_heap_size.gif" alt="maximum heap size" /></span></a></span> setting should be changed to a higher values such as 8 GB when using many languages or plugins.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">I am running low on memory or MPS is running slowly. What can I do without restarting MPS?</p>
-<p>When you have enabled the Loaded models indicator in the lower right corner of the screen, you can click on the text to <a href="https://confluence.jetbrains.com/display/MPS/What%27s+New+in+2019.3#What'sNewin2019.3-Modelunloading">unload not needed models</a>.
-The memory indicator at the same location can be used to free memory. As a last resort the <a href="https://www.jetbrains.com/help/mps/status-bar.html?q=Power%20Save#status-bar-icons">power saving mode</a> can be enabled which disables background tasks such as the model checker.</p>
+<p>When you have enabled the <span class="hover_img"><a href="https://www.jetbrains.com/help/mps/status-bar.html?q=memory%20indicator#status-bar-icons">loaded models indicator<span><img src="../../img/memory_indicator.gif" alt="memory indicator" /></span></a></span> in the lower right corner of the screen, you can click on the text to <a href="https://confluence.jetbrains.com/display/MPS/What%27s+New+in+2019.3#What'sNewin2019.3-Modelunloading">unload not needed models</a>.
+The memory indicator at the same location can be used to free memory. As a last resort the <span class="hover_img"><a href="https://www.jetbrains.com/help/mps/status-bar.html?q=Power%20Save#status-bar-icons">power saving mode<span><img src="../../img/power_saving_mode.gif" alt="power saving mode" /></span></a></span> can be enabled which disables background tasks such as the model checker.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">What is a SRepository and how is it structured?</p>
 <p>The answer can be found in the MPS source code<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.There can be multiple repositories available. Given a repository, references to modules/models/nodes can be resolved.
 There's no need in making ids unique globally as each subsystem knows, which exact repository it needs to use at any moment.
-(e.g. the type-system knows where it stores its type-nodes, so it will not try to resolve references to them )
-<p/>
-A repository contains modules, modules have model roots, each model root can load models.
+(e.g. the type-system knows where it stores its type-nodes, so it will not try to resolve references to them )</p>
+<p>A repository contains modules, modules have model roots, each model root can load models.
 Also a module can be a models container itself (without model root).
 A model is then a set of "root" nodes.
-Each "root" node is a root of a tree of nodes. So that overall, repository is a tree structure.
-<pre>
- repository
- -module1
-        model root 1
-            model1
-              root_node_1
-                child_node_1
-                  child_node_1_1
-                child_node2
-        model root 2</p>
+Each "root" node is a root of a tree of nodes. So that overall, repository is a tree structure.</p>
+<p><img alt="Kroki" src="https://kroki.io/mermaid/svg/eNpljrEOgjAQQHe_4hYCDAzXERIn3LSarsCAsRESaAnUwTT8u02BgjD2vXfXAwDwPF2LWsWgfVXxlvux_ywH7o-j552Mh3dfdhVcWWJf7PLIgp53cqiV7L9hYentnmKWtfL1aThg4SBxkKyQOigMXLZCFJ3tnmRPyIHQxH0wIYZZbnbyBnopFWBezAWbgxS1ngIcx9mlaB2jGNgpYTxguLdkY8nB0o0V4eEu8ncXcXetBTXFJhFL8gO-wWvT" /> </p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Are there othere languages besides Base Language?</p>
@@ -1334,7 +1338,7 @@ Each "root" node is a root of a tree of nodes. So that overall, repository is a 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Where are my log messages?</p>
-<p><code>log info</code> logs to the MPS log file (<a href="https://intellij-support.jetbrains.com/hc/en-us/articles/207241085-Locating-IDE-log-files">idea.log</a>), <code>message info</code> logs to the <a href="https://www.jetbrains.com/help/mps/messages-tool-window.html">messages view</a>.</p>
+<p><code>log info</code> logs to the MPS log file <span class="hover_img"><a href="https://intellij-support.jetbrains.com/hc/en-us/articles/207241085-Locating-IDE-log-files">idea.log<span><img src="../../img/show_log.gif" alt="show log" /></span></a></span>, <code>message info</code> logs to the <span class="hover_img"><a href="https://www.jetbrains.com/help/mps/messages-tool-window.html">messages view<span><img src="../../img/messages_view.png" alt="messages view" /></span></a></span>.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Which log level should I use?</p>
@@ -1354,7 +1358,7 @@ Each "root" node is a root of a tree of nodes. So that overall, repository is a 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 2, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2022</span>
       
     
   </small>
