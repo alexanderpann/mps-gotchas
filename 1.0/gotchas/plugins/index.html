@@ -1288,6 +1288,24 @@
 <p class="admonition-title">How can I find plugins on the JetBrains Marketplace that are usable in MPS?</p>
 <p>Searching for the word <a href="https://plugins.jetbrains.com/search?products=mps&amp;search=MPS">MPS</a> in all categories should do the trick.</p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">Why do many IntelliJ plugins don't work with MPS?</p>
+<p>Many of these plugins are working in combination with the text editor. MPS uses custom editors. It doesn't use
+documents and the <a href="https://plugins.jetbrains.com/docs/intellij/psi.html">Program Structure Interface(PSI)</a> because MPS models are not text based.
+Using plugins that are not developed for MPS can interfere with certain features of MPS (e.g. find usages isn't working anymore).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">My plugin is incompatible with the current RCP version.</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/plugin-incompatible-with-current-version/" target="_blank">Fixing the 'Plugin incompatible with the current [CUSTOM RCP] version' error</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Are there any general purpose plugins for MPS from the community?</p>
+<p>Have a look at the <a href="https://mps.rocks/#awesome-MPS">plugin section</a> of <a href="https://mps.rocks">mps.rocks</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Which kinds of plugins are there?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/24-two-kinds-of-plugins/" target="_blank">Two kinds of MPS plugins</a></p>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -1302,7 +1320,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 15, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2022</span>
       
     
   </small>

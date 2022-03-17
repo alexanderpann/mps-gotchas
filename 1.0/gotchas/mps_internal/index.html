@@ -1283,6 +1283,10 @@
 
 <h1 id="corecomponent">CoreComponent<a class="headerlink" href="#corecomponent" title="Permanent link">&para;</a></h1>
 <div class="admonition question">
+<p class="admonition-title">How to I start using MPS' Open API?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/simplest-way-to-use-mps-open-api/" target="_blank">The simplest way to use MPS Open API</a></p>
+</div>
+<div class="admonition question">
 <p class="admonition-title">How to I get MPS core components from code?</p>
 <p>From the console:
 <div class="highlight"><pre><span></span><code><span class="n">MPSProject</span> <span class="n">p</span> <span class="o">=</span> <span class="p">((</span><span class="n">MPSProject</span><span class="p">)</span> <span class="err">#</span><span class="n">project</span><span class="p">);</span> 
@@ -1375,6 +1379,43 @@ Make sure to call this code from a <a href="https://www.jetbrains.com/help/mps/p
 <p>Note: The message might not be visible by calling from the console, because the rebuild of the model already shows a message:
 <code>WindowManager.getInstance().getStatusBar(ProjectHelper.toIdeaProject(#project))</code></p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">How can I register an IntelliJ extension?</p>
+<p>Find the interface you want to add an extension on <a href="https://plugins.jetbrains.com/docs/intellij/extension-point-list.html">this page</a>.
+The corresponding interface has a static field <code>EP_NAME</code>. If the interface is implemented in Kotlin it might have a static field <code>Companion</code> with a <code>getEP_NAME()</code> method. Extend this interface (EX) and register it through the extension point.
+Example: <code>Interface.EP_NAME.getPoint().registerExtension(new Ex())</code></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I add a status bar widget?</p>
+<p>Implement the interface <code>StatusBarWidgetFactory</code> and register it through the StatusBarWidgetFactory.EP_NAME extension point.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I react to selection changes in the editor?</p>
+<p>editorContext.getSelectionManager().addSelectionListener(new SingularSelectionListenerAdapter() { ... })</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How to I add model imports and used languages programmatically?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/adding-model-imports-and-used-languages-programmatically/" target="_blank">Adding model imports and used languages programmatically</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How do I run MPS code from the command line/CI?</p>
+<ul>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2021-02/09-running-mps-code-from-command-line/" target="_blank">Running MPS code from command line</a></li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/28-running-code-in-mps-on-ci/" target="_blank">Running code in MPS on CI</a></li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I render a node as text?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/04-rendering-node-as-text/" target="_blank">Rendering a node as text</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I associate additional information with a node?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/07-associating-information-with-a-node/" target="_blank">Associating additional information with a node</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How does shrinking of absolute paths work?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/24-shrinking-of-absolute-paths/" target="_blank">Shrinking of absolute paths</a></p>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -1389,7 +1430,7 @@ Make sure to call this code from a <a href="https://www.jetbrains.com/help/mps/p
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 16, 2021</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2022</span>
       
     
   </small>

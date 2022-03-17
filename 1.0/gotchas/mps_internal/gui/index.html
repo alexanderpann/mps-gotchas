@@ -1306,13 +1306,38 @@ its initialisation in <a href="https://github.com/JetBrains/MPS/blob/d08cbd361a2
 <a href="https://plugins.jetbrains.com/docs/intellij/psi-files.html">PSI files</a>, <a href="https://plugins.jetbrains.com/docs/intellij/templates.html">Templates</a>, QuickDoc,
 <a href="https://plugins.jetbrains.com/plugin/8554-ide-features-trainer">IDE Features Trainer</a>, CodeSmellDetector and <a href="https://plugins.jetbrains.com/docs/intellij/custom-language-support.html">Custom Language Support</a>.</p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">How do I add an action to the menu bar of a tool window?</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="n">ToolWindow</span> <span class="n">window</span> <span class="o">=</span> <span class="n">ToolWindowManager</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">myProject</span><span class="p">).</span><span class="na">getToolWindow</span><span class="p">(</span><span class="n">ToolWindowId</span><span class="p">.</span><span class="na">PROJECT_VIEW</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">window</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">window</span><span class="p">.</span><span class="na">setTitleActions</span><span class="p">(</span><span class="n">titleActions</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I have clickable icons in the left editor margin?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/18-clickable-icons-in-left-editor-margin/" target="_blank">Clickable icons in the left editor margin</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Are there alternatives to message boxes?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/notification-balloons-instead-of-message-boxes/" target="_blank">Use notification balloons instead of message boxes</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What IDEA UI elements are available?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/09-idea-ui-components/" target="_blank">Polished UI for free: IDEA UI components</a></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How do I create menu items with checkboxes?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-03/16-extended-actions-checkboxes/" target="_blank">Extended actions: Checkboxes</a></p>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 13, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2022</span>
       
     
   </small>

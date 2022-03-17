@@ -1317,27 +1317,82 @@
 
   <h1>External Files and Tools</h1>
 
+<div class="admonition question">
+<p class="admonition-title">How do I write an importer?</p>
+<ul>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/06-writing-an-importer-introduction/" target="_blank">Writing an importer: Introduction</a></li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/14-writing-an-importer-adding-action-to-menu/" target="_blank">Writing an importer: Adding the action to a menu</a></li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/18-writing-an-importer-invoking-from-editor/" target="_blank">Writing an importer: Invoking from the editor</a></li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/25-writing-an-importer-error-handling-considerations/" target="_blank">Writing an importer: Error handling considerations</a></li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-02/14-writing-an-importer-updating-existing-nodes/" target="_blank">Writing an importer: Updating existing nodes</a></li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Where do I put my JARs?</p>
+</div>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-03/04-where-do-i-put-my-jars/" target="_blank">Where do I put my JARs?</a></p>
 <h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">I want to load an external file into MPS / I want to migrate existing data into MPS.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
-<p>Write a solution that imports the files and converts them to your model or use custom persistence.</p>
+<p>Write a solution that imports the files and converts them to your model or use custom persistence.
+<a href="https://specificlanguages.com/posts/2022-01/06-writing-an-importer-introduction/">Here</a> is a tutorial series to get started
+Make sure to search the <a href="https://specificlanguages.com/posts/">other posts</a> for followup posts of this tutorial.</p>
 </div>
 <h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">I want to run an LSP server for MPS grammars.</p>
-<p>Not possible at the moment.</p>
+<p>There is no support for this in IntellJ products (see <a href="https://youtrack.jetbrains.com/issue/IDEABKL-7409">this ticket</a>)
+and also no implementation in MPS.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">I want to use databases in MPS.</p>
-<p>MPS doesn't have any special support for databases or Spring Boot  (unlike IntelliJ IDEA) .</p>
+<ul>
+<li>MPS doesn't have any special support for databases or for example Spring Boot  (unlike IntelliJ IDEA) .</li>
+<li>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/12-mps-is-not-a-relational-database/" target="_blank">MPS is not a (relational) database</a></li>
+</ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">I want to create a standalone utility (not a complete IDE) for language generation with MPS.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
-<p>Not possible at the moment.</p>
+<p>Not possible at the moment but you can interact with MPS models from Java when you setup the necessary dependencies:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">jetbrains.mps.smodel.ModelAccess</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">jetbrains.mps.tool.environment.EnvironmentConfig</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">jetbrains.mps.project.Project</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">jetbrains.mps.tool.environment.MpsEnvironment</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.mps.openapi.model.SModel</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.mps.openapi.module.SModule</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="n">String</span> <span class="n">projectDir</span> <span class="o">=</span> <span class="s">&quot;your MPS project path&quot;</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">EnvironmentConfig</span> <span class="n">config</span> <span class="o">=</span> <span class="n">EnvironmentConfig</span><span class="p">.</span><span class="na">emptyConfig</span><span class="p">();</span>
+        <span class="n">MpsEnvironment</span> <span class="n">ourEnv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MpsEnvironment</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+        <span class="n">ourEnv</span><span class="p">.</span><span class="na">init</span><span class="p">();</span>
+        <span class="n">Project</span> <span class="n">myProject</span> <span class="o">=</span> <span class="n">ourEnv</span><span class="p">.</span><span class="na">openProject</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">projectDir</span><span class="p">));</span>
+        <span class="n">myProject</span><span class="p">.</span><span class="na">getModelAccess</span><span class="p">().</span><span class="na">runReadAction</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">SModule</span> <span class="n">module</span><span class="p">:</span><span class="n">myProject</span><span class="p">.</span><span class="na">getProjectModules</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">for</span><span class="p">(</span><span class="n">SModel</span> <span class="n">model</span><span class="p">:</span><span class="n">module</span><span class="p">.</span><span class="na">getModels</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">I want to share MPS snippets.</p>
-<p>You can use <a href="https://blog.logv.ws/2021/10/19/skadi-cloud-gist-2/">Skadi Cloud</a>.</p>
+<p>You can use <a href="https://blog.logv.ws/2021/10/19/skadi-cloud-gist-2/">Skadi Cloud Gists</a>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">I want to run MPS in the browser.</p>
+<p>You can try <a href="https://skadi.cloud/">Skadi Cloud</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How do I correctly run git clean?</p>
+<p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/17-mpsclean/" target="_blank">mpsclean</a></p>
 </div>
 <div class="footnote">
 <hr />
@@ -1356,7 +1411,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 28, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2022</span>
       
     
   </small>
