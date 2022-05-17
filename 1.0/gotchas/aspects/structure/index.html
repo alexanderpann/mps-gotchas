@@ -1303,13 +1303,21 @@ in the <a href="https://www.jetbrains.com/help/mps/2020.1/suppressing-errors.htm
 <p class="admonition-title">How do I find examples of MPS concepts?</p>
 <p>Specific Languages Blog &mdash; <a href="https://specificlanguages.com/posts/2022-01/19-finding-examples/" target="_blank">Finding examples of MPS concepts</a></p>
 </div>
+<div class="admonition question">
+<p class="admonition-title">How do I get the previous label of a reference?</p>
+<p><code>((SReference)node.getReference(link)).getResolveInfo()</code> or <code>node.reference&lt;ref&gt;.resolveInfo</code>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Can I use the resolve info to fix a broken reference?</p>
+<p><code>ResolverComponent.getInstance().resolve</code>.</p>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 17, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 17, 2022</span>
       
     
   </small>
